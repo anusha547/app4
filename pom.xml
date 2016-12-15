@@ -38,6 +38,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -45,6 +46,20 @@
 			</plugin>
 		</plugins>
 	</build>
-
+ <profiles>
+       
+        <profile>
+            <id>heroku</id>
+            <activation>
+                <property>
+                    <name>env.SOURCE_VERSION</name>
+                </property>
+            </activation>
+            <properties>
+                <buildNumber>${env.SOURCE_VERSION}</buildNumber>
+            </properties>
+        </profile>
+       
+    </profiles>
 
 </project>
